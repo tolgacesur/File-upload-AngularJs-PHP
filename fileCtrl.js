@@ -11,7 +11,7 @@ app.controller('fileCtrl',['$scope','$http', function ($scope,$http) {
 
 		fd.append('file',files);
 
-		var url = "http://localhost/File-upload-AngularJs-PHP/upload.php";
+		var url = "upload.php";
 
 		//Ajax Request
 	
