@@ -1,25 +1,28 @@
 <?php
 
-// take file name
-$filename = $_FILES['file']['name'];
+// "Author" : Tolga CESUR
 
-// location for storage
-$location = './upload/';
+
+// for linux main temporary
+$dizin = '/tmp/';  // For windows it can be C://Windows/Temp/
+
+$name = $_FILES['file']['name'];  // file name on client side
+$yuklenecek_dosya = $dizin.basename($_FILES["file"]["name"]);  // new temporary
 
 // upload file function
 // etc. => move_uploaded_file(filename, destination);
-if (move_uploaded_file($_FILES['file']['uploaded'], $location.$filename)) {
-	// return Array file name
-	$arr = array('name' => $filename, 'status' => 'okay' );
+if (move_uploaded_file($_FILES['file']['tmp_name'], $yuklenecek_dosya))
+{	
+	//Make array for response
+    $arr = array('name' => $name, 'status'=>'Başarı ile kayıt edildi.' );
+    
+    // convert the array to json 
+    echo json_encode($arr); // encode -> turn array to JSON etc.
+                            // decode -> turn JSON to array etc.
+
 } else {
-	// return Array file name
-	$arr = array('name' => $filename, 'status' => 'no' );
+    $arr = array('name' => $name, 'status'=>'kayıt edilemedi.' );
+    echo json_encode($arr);
 }
-
-
-// response in JSON format
-echo json_encode($arr); // encode -> turn array to JSON etc.
-                        // decode -> turn JSON to array etc.
-
 
 ?>
