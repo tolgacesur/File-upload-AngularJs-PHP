@@ -1,0 +1,68 @@
+<!- index.html for application ->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+<!- Angular files ->
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+<!- app.js ->
+<script src="app.js"></script>
+<script src="fileCtrl.js"></script>
+
+
+</head>
+<body ng-app='app'>
+  <div ng-controller="fileCtrl">
+<form role="form" name="myForm" ng-submit="submitCuisine(myForm.$valid)" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : myForm.name.$invalid && myForm.name.$touched }">
+               <label for="name">İsim</label>
+               <input type="text" class="form-control" id="name"  name="name"
+                   ng-model="dataform.name" required>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : myForm.description.$invalid && myForm.description.$touched }">
+               <label for="description">Açıklama</label>
+               <input type="text" class="form-control" id="description" name="description" 
+                   ng-model="dataform.description" required>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : myForm.category.$invalid && myForm.category.$touched }">
+               <label for="description">Kategori</label>
+                <select class="form-control" ng-model="dataform.category" id="category" name="category" required>
+                   <option>A</option>
+                   <option>B</option>
+                 </select>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : myForm.subcategory.$invalid && myForm.subcategory.$touched }">
+               <label for="description">Alt Katagori</label>
+                <select class="form-control" ng-model="dataform.subcategory" id="subcategory" name="subcategory" required>
+                   <option>C</option>
+                   <option>D</option>
+                 </select>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : myForm.price.$invalid && myForm.price.$touched }">
+               <label for="description">Ücret</label>
+               <span class="fa fa-dollar"></span>
+               <input type="number" class="form-control" id="price" name="price" 
+                  placeholder="Price" ng-model="dataform.price" required>
+            </div>  
+            <div class="form-group">
+               <label for="description">Dosya</label> 
+               <input type="file"  file-input="files" name="file"/>
+            </div>  
+            <button class="btn btn-primary" type="submit" ng-disabled="myForm.$invalid"> Submit</button>
+        </form>
+
+
+  </div>
+
+
+</body>
+
+
+
+</html>
