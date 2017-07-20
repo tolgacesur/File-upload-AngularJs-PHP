@@ -7,7 +7,7 @@ For upload file with AngularJS need to send the file by $http service and with t
 Features:
 
 ```
-- Without Custom directive
+- With And Without Custom directive
 - Ajax request
 - Flash messages
 ```
